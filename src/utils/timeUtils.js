@@ -4,7 +4,8 @@ export const getCurrentTimestamp = () => {
 
 export const getTodayStartTimestamp = () => {
     const now = new Date();
-    return new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    // 使用 UTC 日期
+    return Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
 };
 
 export const getAllTimeStartTimestamp = () => {
