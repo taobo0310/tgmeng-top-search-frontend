@@ -55,6 +55,19 @@ export default function generateRSS(key) {
     }
 
     return fetchData(info).then(dataInfo => {
+        console.log('=== 调试信息 ===');
+        console.log('dataInfo 类型:', typeof dataInfo);
+        console.log('dataInfo 是数组吗:', Array.isArray(dataInfo));
+        console.log('dataInfo 长度:', dataInfo?.length);
+        console.log('dataInfo 内容:', JSON.stringify(dataInfo, null, 2));
+
+        // 如果有数据，检查第一条
+        if (dataInfo.length > 0) {
+            console.log('第一条数据:', dataInfo[0]);
+            console.log('  - title:', dataInfo[0].title);
+            console.log('  - url:', dataInfo[0].url);
+            console.log('  - platform:', dataInfo[0].platform);
+        }
         function generateItemXml(item) {
             const title = escapeXml(item.title || '无标题', true);
             const link = escapeXml(item.url || '', false);
